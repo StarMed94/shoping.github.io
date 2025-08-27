@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wookedyou - كوكيديو</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6A0DAD;
+            --secondary: #FF9E01;
+            --accent: #00C2A8;
+            --light: #F8F9FA;
+            --dark: #1E1E2A;
+            --gray: #6C757D;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), #8A2BE2);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            height: 40px;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 8px 20px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .btn-primary {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #FF8A00;
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(106, 13, 173, 0.9), rgba(106, 13, 173, 0.8)), url('https://images.unsplash.com/photo-1516387938699-a93567ec168e?ixlib=rb-4.0.3') center/cover;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .search-box {
+            background: white;
+            border-radius: 50px;
+            padding: 5px;
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .search-box input {
+            flex: 1;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 50px;
+            outline: none;
+            font-size: 1rem;
+        }
+        
+        .search-box button {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .search-box button:hover {
+            background: #FF8A00;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            background: var(--primary);
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 80px 0;
+            background: #F3F4F6;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-img {
+            height: 200px;
+            background: linear-gradient(45deg, #6A0DAD, #8A2BE2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .product-content {
+            padding: 20px;
+        }
+        
+        .product-content h3 {
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .product-content p {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+        
+        .product-price {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #DDD;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background: var(--secondary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #AAA;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-gem" style="font-size: 32px; color: #FF9E01;"></i>
+                    <h1>Wookedyou</h1>
+                </div>
+                
+                <nav class="nav-links">
+                    <a href="#">الرئيسية</a>
+                    <a href="#">منتجاتنا</a>
+                    <a href="#">خدماتنا</a>
+                    <a href="#">عنا</a>
+                    <a href="#">اتصل بنا</a>
+                </nav>
+                
+                <div class="auth-buttons">
+                    <button class="btn btn-outline">تسجيل الدخول</button>
+                    <button class="btn btn-primary">إنشاء حساب</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>اكتشف عالمًا من المنتجات الاستثنائية</h2>
+                <p>نسعى دائمًا لتقديم الأفضل لعملائنا الكرام من خلال منتجات فريدة وخدمات متميزة</p>
+                
+                <div class="search-box">
+                    <input type="text" placeholder="ابحث عن المنتجات والخدمات...">
+                    <button><i class="fas fa-search"></i> بحث</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>لماذا تختار Wookedyou؟</h2>
+                <p>نحن نقدم مميزات رائعة تجعل تجربتك معنا استثنائية</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3>شحن سريع</h3>
+                    <p>خدمة شحن سريعة وموثوقة لجميع أنحاء العالم مع تتبع الشحنات</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>آمن وسليم</h3>
+                    <p>معاملات آمنة وحماية للبيانات مع ضمان الجودة للمنتجات</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>دعم فني</h3>
+                    <p>فريق دعم فني متاح على مدار الساعة لمساعدتك في أي استفسار</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>منتجاتنا المميزة</h2>
+                <p>استكشف مجموعة منتجاتنا الحصرية عالية الجودة</p>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3>أجهزة تقنية حديثة</h3>
+                        <p>أحدث الأجهزة التقنية بمواصفات عالية وأسعار تنافسية</p>
+                        <div class="product-price">1,200 ر.س</div>
+                        <button class="btn btn-primary">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3>ملابس عصرية</h3>
+                        <p>تصميمات عصرية وجودة عالية من أفضل المصممين العالميين</p>
+                        <div class="product-price">250 ر.س</div>
+                        <button class="btn btn-primary">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3>ديكور منزلي</h3>
+                        <p>تشكيلة رائعة من قطع الديكور التي تضيف لمسة جمالية لمنزلك</p>
+                        <div class="product-price">450 ر.س</div>
+                        <button class="btn btn-primary">أضف إلى السلة</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>عن Wookedyou</h3>
+                    <p>نحن منصة تسوق رائدة نقدم منتجات وخدمات عالية الجودة لعملائنا في جميع أنحاء العالم.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="#">الرئيسية</a></li>
+                        <li><a href="#">منتجاتنا</a></li>
+                        <li><a href="#">خدماتنا</a></li>
+                        <li><a href="#">عنا</a></li>
+                        <li><a href="#">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>خدماتنا</h3>
+                    <ul>
+                        <li><a href="#">التسوق الإلكتروني</a></li>
+                        <li><a href="#">الشحن والتوصيل</a></li>
+                        <li><a href="#">الدفع الآمن</a></li>
+                        <li><a href="#">الدعم الفني</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>اتصل بنا</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية</li>
+                        <li><i class="fas fa-phone"></i> +966 12 345 6789</li>
+                        <li><i class="fas fa-envelope"></i> info@wookedyou.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023 Wookedyou. جميع الحقوق محفوظة</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.btn-primary');
+            
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    this.innerHTML = '<i class="fas fa-check"></i> تمت الإضافة';
+                    this.style.background = '#34A853';
+                    
+                    setTimeout(() => {
+                        this.innerHTML = '<i class="fas fa-shopping-cart"></i> أضف إلى السلة';
+                        this.style.background = '';
+                    }, 2000);
+                });
+            });
+            
+            // Search functionality
+            const searchBox = document.querySelector('.search-box input');
+            const searchButton = document.querySelector('.search-box button');
+            
+            searchButton.addEventListener('click', function() {
+                if (searchBox.value.trim() !== '') {
+                    alert('جاري البحث عن: ' + searchBox.value);
+                } else {
+                    alert('يرجى إدخال كلمة البحث');
+                }
+            });
+            
+            searchBox.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    searchButton.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
